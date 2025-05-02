@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common'
+import { Body, ConflictException, Controller, Post } from '@nestjs/common'
 import { PrismaService } from 'src/prisma/prisma.service'
 
 @Controller('/accounts')
@@ -6,10 +6,18 @@ export class CreateAccountController {
   constructor(private prisma: PrismaService) {}
 
   @Post()
-  async handle() {
-    const name = 'John Doe'
-    const email = 'doe@gmail'
-    const password = '123456'
+  async handle(@Body body: any) {
+    const { name, email, password } = body
+
+    const userWitchSameEmail = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    })
+
+    if (userWitchSameEmail) {
+      throw new ConflictException('User already exists')
+    }
 
     await this.prisma.user.create({
       data: {
