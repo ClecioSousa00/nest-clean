@@ -3319,17 +3319,17 @@ export namespace Prisma {
 
   export type QuestionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: QuestionWhereInput | QuestionWhereInput[]
     OR?: QuestionWhereInput[]
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     title?: StringFilter<"Question"> | string
-    slug?: StringFilter<"Question"> | string
     content?: StringFilter<"Question"> | string
     createdAt?: DateTimeFilter<"Question"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Question"> | Date | string | null
     authorId?: StringFilter<"Question"> | string
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "slug">
 
   export type QuestionOrderByWithAggregationInput = {
     id?: SortOrder
