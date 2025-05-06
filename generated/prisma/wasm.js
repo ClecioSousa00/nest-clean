@@ -124,7 +124,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  role: 'role'
 };
 
 exports.Prisma.QuestionScalarFieldEnum = {
@@ -134,7 +135,17 @@ exports.Prisma.QuestionScalarFieldEnum = {
   content: 'content',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  authorId: 'authorId'
+  authorId: 'authorId',
+  bestAnswerId: 'bestAnswerId'
+};
+
+exports.Prisma.AnswerScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  authorId: 'authorId',
+  questionId: 'questionId'
 };
 
 exports.Prisma.SortOrder = {
@@ -151,11 +162,15 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.UserRole = exports.$Enums.UserRole = {
+  STUDENT: 'STUDENT',
+  INSTRUCTOR: 'INSTRUCTOR'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Question: 'Question'
+  Question: 'Question',
+  Answer: 'Answer'
 };
 
 /**
