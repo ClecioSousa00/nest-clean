@@ -5,7 +5,7 @@ export interface AnswersCommentsRepository {
   create(answerComment: AnswerComment): Promise<void>
   findById(id: string): Promise<AnswerComment | null>
   delete(questionComment: AnswerComment): Promise<void>
-  findManyByQuestionId(
+  findManyByAnswerId(
     questionId: string,
     params: PaginationParams,
   ): Promise<AnswerComment[]>
